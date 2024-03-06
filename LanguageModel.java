@@ -39,6 +39,9 @@ public class LanguageModel {
     // Computes and sets the probabilities (p and cp fields) of all the
 	// characters in the given list. */
 	public void calculateProbabilities(List probs) {
+        if (probs = null) {
+         throw new IllegalArgumentException();
+        }
 		int totalChar = 0;
         double cpProb = 0;
         ListIterator iterate = probs.listIterator(0);
@@ -56,6 +59,9 @@ public class LanguageModel {
 	}
     // Returns a random character from the given probabilities list.
 	public char getRandomChar(List probs) {
+        if (probs == null) {
+         throw new IllegalArgumentException();
+        }
         double r = Math.random();
         char rand = ' ';
         ListIterator iterate = probs.listIterator(0);
