@@ -1,4 +1,4 @@
-/** Represents a character data object. 
+/** Represents a character data object.
  *  A character data object has a char value,
  *  a counter, and two probability fields. */
 public class CharData {
@@ -7,10 +7,10 @@ public class CharData {
 	char chr;
 
 	// a counter
-	int count; 
+	int count;
 
 	// a probability (number between 0 and 1)
-	double p;    
+	double p;
 
 	// a commulative probability (number between 0 and 1)
 	double cp;
