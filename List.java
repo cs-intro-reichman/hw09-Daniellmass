@@ -29,8 +29,18 @@ public class List {
 
     /** GIVE Adds a CharData object with the given character to the beginning of this list. */
     public void addFirst(char chr) {
+       CharData newChData = new CharData(chr);
+       Node addFirst = new Node(newChData, first);
+       first = addFirst;
+       size++;
+    }
+
+    //Helper Method 
+    public CharData safeGetFirst() {
         if (first != null) {
-            first.cp.chr = chr;
+            return getFirst();
+        } else {
+            return null;
         }
     }
     
@@ -40,11 +50,10 @@ public class List {
         String str = "(";
         Node current = first;
         while (current != null) {
-            str += current.cp + " ";
+            str += current.cp.toString() + " ";
             current = current.next;
         }
-        return "";
-        // return str.substring(0, str.length() - 1) + ")";
+        return str.trim() + ")";
     }
 
     /** Returns the index of the first CharData object in this list
@@ -57,7 +66,7 @@ public class List {
         int index = 0;
         Node current = first;
         while (current != null) {
-            if (current.cp.chr == chr) {
+            if (current.cp.equals(chr)) {
                 return index;
             }
             index++;
@@ -70,21 +79,20 @@ public class List {
      *  increments its counter. Otherwise, adds a new CharData object with the
      *  given chr to the beginning of this list. */
     public void update(char chr) {
-        if (size != 0) {
-            boolean update = true;
-            Node current = first;
-            while (current != null) {
+     if (size == 0) {
+      return;
+     }
+     Node current = first;
+     while (current.cp != null) {
                 if (current.cp.chr == chr) {
                     current.cp.count++;
-                    update = false;
+                    break;
                 }
                 current = current.next;
             }
-            if (update) {
-                addFirst(chr);
-            }
-        }
+      addFirst(chr); 
     }
+    
 
     /** GIVE If the given character exists in one of the CharData objects
      *  in this list, removes this CharData object from the list and returns
@@ -119,13 +127,9 @@ public class List {
         if (index < 0 || index > size - 1) {
             throw new IndexOutOfBoundsException();
         }
-        int counter = 0;
         Node current = first;
-        while (current != null) {
-            if (counter == index) {
-            break;
-            }
-            current = current.next;
+        for (int i = 0; i < index; i++) {
+         current = current.next;
         }
         return current.cp;
     }
