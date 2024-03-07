@@ -108,19 +108,18 @@ public class LanguageModel {
         if (initialText.length() < windowLength) {
             return initialText;
         }
-		StringBuilder genText = new StringBuilder(initialText);
+        StringBuilder genText = new StringBuilder(initialText);
         while (genText.length() < textLength) {
             String currWindow = genText.substring(Math.max(0, genText.length() - windowLength));
             List charDataL = CharDataMap.get(currWindow);
             char nextCh;
-            if (charDataL == null) {
-                return genText.toString();
+            if (charDataL == null || charDataL.getSize() == 0) {
+                break;
             }
-            else {
              nextCh = getRandomChar(charDataL);
               genText.append(nextCh);
              
-            }
+            
             
         }
         return genText.toString();
