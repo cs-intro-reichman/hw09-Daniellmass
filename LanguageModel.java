@@ -87,10 +87,11 @@ public class LanguageModel {
         ListIterator iterate = probs.listIterator(0);
         while (iterate.hasNext()) {
             CharData current = iterate.next();
+            totalProb += current.cp;
             if (current.cp >= r) {
                 return current.chr;
             }
-             
+
         }  
         return probs.get(probs.getSize() - 1).chr;
         }
