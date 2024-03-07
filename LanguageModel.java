@@ -30,6 +30,8 @@ public class LanguageModel {
         randomGenerator = new Random();
         CharDataMap = new HashMap<String, List>();
     }
+    
+
 
     /** Builds a language model from the text in the given file (the corpus). */
 	public void train(String fileName) {
@@ -112,15 +114,11 @@ public class LanguageModel {
         while (genText.length() < textLength) {
             String currWindow = genText.substring(Math.max(0, genText.length() - windowLength));
             List charDataL = CharDataMap.get(currWindow);
-            char nextCh;
-            if (charDataL == null || charDataL.getSize() == 0) {
-                break;
+            if (charDataL == null ) {
+              break;
             }
-             nextCh = getRandomChar(charDataL);
-              genText.append(nextCh);
-             
-            
-            
+             char nextCh = getRandomChar(charDataL);
+              genText.append(nextCh);  
         }
         return genText.toString();
 	}

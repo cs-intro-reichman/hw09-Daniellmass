@@ -26,6 +26,14 @@ public class List {
     public CharData getFirst() {
         return first.cp;
     }
+    //Helper Method 
+    public CharData safeGetFirst() {
+        if (first != null) {
+            return getFirst();
+        } else {
+            return null;
+        }
+    }
 
     /** GIVE Adds a CharData object with the given character to the beginning of this list. */
     public void addFirst(char chr) {
@@ -35,14 +43,7 @@ public class List {
        size++;
     }
 
-    //Helper Method 
-    public CharData safeGetFirst() {
-        if (first != null) {
-            return getFirst();
-        } else {
-            return null;
-        }
-    }
+    
     
     /** GIVE Textual representation of this list. */
     public String toString() {
@@ -105,7 +106,7 @@ public class List {
         Node prev = null;
         Node current = first;
         if (current.cp.chr == chr) {
-            current = first;
+            first = first.next;
             size--;
             return true;
         }
@@ -130,7 +131,7 @@ public class List {
      *  If the index is negative or is greater than the size of this list,
      *  throws an IndexOutOfBoundsException. */
     public CharData get(int index) {
-        if (index < 0 || index >= this.size && this. size != 0 ) {
+        if (index < 0 || index >= this.size) {
             throw new IndexOutOfBoundsException();
         } 
         Node current = first;
