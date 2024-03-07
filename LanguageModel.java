@@ -39,7 +39,7 @@ public class LanguageModel {
     // Computes and sets the probabilities (p and cp fields) of all the
 	// characters in the given list. */
 	public void calculateProbabilities(List probs) {
-        if (probs = null) {
+        if (probs == null) {
          throw new IllegalArgumentException();
         }
 		int totalChar = 0;
