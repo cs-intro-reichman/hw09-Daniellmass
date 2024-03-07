@@ -123,10 +123,6 @@ public class LanguageModel {
         return genText.toString();
 	}
 
-    //Helper Method
-    private getRandomChar () {
-
-    }
 
     
 
