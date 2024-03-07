@@ -80,7 +80,6 @@ public class List {
      *  given chr to the beginning of this list. */
     public void update(char chr) {
      if (size == 0) {
-      addFirst(chr);
       return;
      }
      Node current = first;
