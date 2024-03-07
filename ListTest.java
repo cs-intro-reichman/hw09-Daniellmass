@@ -14,7 +14,7 @@ public class ListTest {
                 break;
             case "indexOf":
                 result = testIndexOf();
-                break;  
+                break;
             case "get":
                 result = testGet();
                 break;
@@ -32,7 +32,7 @@ public class ListTest {
                 result = result && testGet();
                 result = result && testUpdate();
                 result = result && testRemove();
-                break; 
+                break;
             default:
                 break;
         }
@@ -107,7 +107,7 @@ public class ListTest {
         for (int i = 0; i < testWords.length; i++) {
             String w = testWords[i];
             for (int j = 0; j < w.length(); j++) {
-                yourSolution.addFirst(w.charAt(w.length() - 1 - j));                
+                yourSolution.addFirst(w.charAt(w.length() - 1 - j));
             }
             boolean res = true;
             for (int j = 0; j < w.length(); j++) {
@@ -138,7 +138,7 @@ public class ListTest {
         for (int i = 0; i < testWords.length; i++) {
             String w = testWords[i];
             for (int j = 0; j < w.length(); j++) {
-                yourSolution.addFirst(w.charAt(w.length() - 1 - j));                
+                yourSolution.addFirst(w.charAt(w.length() - 1 - j));
             }
             boolean res = true;
             for (int j = 0; j < w.length(); j++) {
@@ -227,14 +227,14 @@ public class ListTest {
             List yourSolution = new List();
             String w = testWords[i];
             for (int j = 0; j < w.length(); j++) {
-                yourSolution.addFirst(w.charAt(w.length() - 1 - j));                
+                yourSolution.addFirst(w.charAt(w.length() - 1 - j));
             }
             boolean res = testRemoveCase(yourSolution, w, removeChars[i]);
             if (!res){
                 System.out.println("Word: " + w + ", chars attempted to remove: " + Arrays.toString(removeChars[i]));
                 System.out.println("Actual: " + yourSolution.toString());
             }
-            result = result && res;   
+            result = result && res;
         }
         if (!result){
             System.out.println("Remove Test failed");
