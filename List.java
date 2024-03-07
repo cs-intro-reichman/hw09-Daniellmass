@@ -47,13 +47,13 @@ public class List {
     /** GIVE Textual representation of this list. */
     public String toString() {
         if (size == 0) return "()";
-        String str = "(";
+        StringBuilder str = new StringBuilder("(");
         Node current = first;
         while (current != null) {
-            str += current.cp.toString() + " ";
+            str.append(current.cp.toString()).append(" ") ;
             current = current.next;
         }
-        return str.trim() + ")";
+        return str.toString().trim() + ")";
     }
 
     /** Returns the index of the first CharData object in this list
