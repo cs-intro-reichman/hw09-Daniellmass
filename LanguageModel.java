@@ -42,14 +42,14 @@ public class LanguageModel {
             window += in.readChar();
         }
         while (!in.isEmpty()) {
-        c = in.readChar();
-        List probs = CharDataMap.get(window);
-        if (probs == null) {
-            probs = new List();
-            CharDataMap.put(window, probs);
-        }
-        probs.update(c);
-        window = window.substring(1) + c;
+            c = in.readChar();
+            List probs = CharDataMap.get(window);
+            if (probs == null) {
+                probs = new List();
+                CharDataMap.put(window, probs);
+            }
+            probs.update(c);
+            window = window.substring(1) + c;
         }
         in.close();
         for ( List probs :CharDataMap.values()) {
@@ -81,22 +81,21 @@ public class LanguageModel {
 	}
     // Returns a random character from the given probabilities list.
 	public char getRandomChar(List probs) {
-        if (probs == null) {
-         throw new IllegalArgumentException();
-        }
-        double r = randomGenerator.nextDouble();
-        double totalProb = 0;
-        ListIterator iterate = probs.listIterator(0);
-        while (iterate.hasNext()) {
-            CharData current = iterate.next();
-            totalProb += current.cp;
-            if (current.cp >= r) {
-                return current.chr;
-            }
-
-        }  
-        return probs.get(probs.getSize() - 1).chr;
-        }
+     if (probs == null) {
+      throw new IllegalArgumentException();
+     }
+     double r = randomGenerator.nextDouble();
+     double totalProb = 0;
+     ListIterator iterate = probs.listIterator(0);
+     while (iterate.hasNext()) {
+      CharData current = iterate.next();
+      totalProb += current.cp;
+      if (current.cp >= r) {
+        return current.chr;
+      }
+     }  
+    return probs.get(probs.getSize() - 1).chr;
+    }
 
 
     /**
@@ -114,7 +113,7 @@ public class LanguageModel {
         while (genText.length() < textLength + initialText.length()) {
             String currWindow = genText.substring(Math.max(0, genText.length() - windowLength));
             List charDataL = CharDataMap.get(currWindow);
-            if (charDataL == null ) {
+            if (charDataL == null) {
               break;
             }
              char nextCh = getRandomChar(charDataL);
