@@ -111,7 +111,7 @@ public class LanguageModel {
             return initialText;
         }
         StringBuilder genText = new StringBuilder(initialText);
-        while (genText.length() < textLength) {
+        while (genText.length() < textLength + initialText.length()) {
             String currWindow = genText.substring(Math.max(0, genText.length() - windowLength));
             List charDataL = CharDataMap.get(currWindow);
             if (charDataL == null ) {
