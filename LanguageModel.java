@@ -122,12 +122,7 @@ public class LanguageModel {
         }
         return genText.toString();
 	}
-    //Helper Method
-    private char getRandom () {
-        List totalLists = new
-
-
-    }
+    
 
     /** Returns a string representing the map of this language model. */
 	public String toString() {
