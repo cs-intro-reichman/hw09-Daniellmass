@@ -79,18 +79,19 @@ public class List {
      *  increments its counter. Otherwise, adds a new CharData object with the
      *  given chr to the beginning of this list. */
     public void update(char chr) {
-     if (size == 0) {
-      return;
-     }
-     Node current = first;
+    Node current = first;
+    boolean found = false;
      while (current != null) {
       if (current.cp.chr == chr) {
       current.cp.count++;
+      found = true;
       break;
       }
       current = current.next;
       }
+      if (!found) {
       addFirst(chr); 
+      }
     }
     
 
@@ -101,37 +102,42 @@ public class List {
         if (size == 0) {
             return false;
         }
-        Node prev = first;
-        Node current = first.next;
-        if (prev.cp.chr == chr) {
+        Node prev = null;
+        Node current = first;
+        if (current.cp.chr == chr) {
             current = first;
             size--;
             return true;
         }
         while (current != null) {
             if (current.cp.chr == chr) {
-                prev.next = current.next;
+                if (prev == null) {
+                    first = first.next;
+                }
+                else {
+                    prev.next = current.next;
+                }
                 size --;
                 return true;
             }
-            prev = prev.next;
+            prev = current;
             current = current.next;
         }
-        return false;
+            return false;
     }
 
     /** Returns the CharData object at the specified index in this list.
      *  If the index is negative or is greater than the size of this list,
      *  throws an IndexOutOfBoundsException. */
     public CharData get(int index) {
-        if (index < 0 || index > size - 1) {
+        if (index < 0 || index >= this.size && this. size != 0 ) {
             throw new IndexOutOfBoundsException();
-        }
+        } 
         Node current = first;
         for (int i = 0; i < index; i++) {
          current = current.next;
         }
-        return current.cp;
+        return (CharData) current.cp;
     }
 
     /** Returns an array of CharData objects, containing all the CharData objects in this list. */
