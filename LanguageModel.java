@@ -113,7 +113,7 @@ public class LanguageModel {
             List charDataL = CharDataMap.get(currWindow);
             char nextCh;
             if (charDataL == null) {
-                break;
+                return genText.toString();
             }
             else {
             nextCh = getRandomChar(charDataL);
@@ -122,6 +122,12 @@ public class LanguageModel {
         }
         return genText.toString();
 	}
+
+    //Helper Method
+    private getRandomChar () {
+
+    }
+
     
 
     /** Returns a string representing the map of this language model. */
