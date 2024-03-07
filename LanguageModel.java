@@ -116,8 +116,10 @@ public class LanguageModel {
                 return genText.toString();
             }
             else {
-            nextCh = getRandomChar(charDataL);
-            genText.append(nextCh);
+             nextCh = getRandomChar(charDataL);
+             if (nextCh != ' ') {
+              genText.append(nextCh);
+             }
             }
             
         }
