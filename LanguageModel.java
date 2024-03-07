@@ -82,15 +82,15 @@ public class LanguageModel {
         if (probs == null) {
          throw new IllegalArgumentException();
         }
-        double r = Math.random();
+        double r = randomGenerator.nextDouble();
         double totalProb = 0;
         ListIterator iterate = probs.listIterator(0);
         while (iterate.hasNext()) {
             CharData current = iterate.next();
-            totalProb += r;
             if (current.cp >= r) {
                 return current.chr;
-            } 
+            }
+             
         }  
         return probs.get(probs.getSize() - 1).chr;
         }
@@ -117,9 +117,8 @@ public class LanguageModel {
             }
             else {
              nextCh = getRandomChar(charDataL);
-             if (nextCh != ' ') {
               genText.append(nextCh);
-             }
+             
             }
             
         }
