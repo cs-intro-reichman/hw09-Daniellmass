@@ -111,11 +111,14 @@ public class LanguageModel {
         while (genText.length() < textLength) {
             String currWindow = genText.substring(Math.max(0, genText.length() - windowLength));
             List charDataL = CharDataMap.get(currWindow);
+            char nextCh;
             if (charDataL == null) {
-                break;
+                nextCh = ' ';
             }
-            char nextCh = getRandomChar(charDataL);
+            else {
+            nextCh = getRandomChar(charDataL);
             genText.append(nextCh);
+            }
         }
         return genText.toString();
 	}
